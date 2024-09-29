@@ -1,0 +1,32 @@
+{
+    "name": "belkacar/gauge-exporter-client",
+    "description": "Gauge Exporter PHP client",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "guzzlehttp/psr7": "^2.6",
+        "psr/http-client": "^1.0",
+        "webmozart/assert": "^1.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Belkacar\\GaugeExporterClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Belkacar\\GaugeExporterClient\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "php-http/mock-client": "^1.6"
+    }
+}

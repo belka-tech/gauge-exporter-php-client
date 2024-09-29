@@ -1,0 +1,31 @@
+name: PHPUnit Test
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.0', '8.1', '8.2', '8.3']
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up PHP with matrix version
+      - name: Set up PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      # Install dependencies via Composer
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+
+      # Run PHPUnit tests
+      - name: Run PHPUnit
+        run: ./vendor/bin/phpunit
