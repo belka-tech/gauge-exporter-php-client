@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Belkacar\GaugeExporterClient\Tests;
+namespace BelkaTech\GaugeExporterClient\Tests;
 
-use Belkacar\GaugeExporterClient\MetricBag;
+use BelkaTech\GaugeExporterClient\MetricBag;
 use Exception;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;

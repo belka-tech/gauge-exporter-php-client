@@ -1,14 +1,14 @@
 # Gauge Exporter PHP Client
 
-PHP Client for [Gague Exporter](https://github.com/belka-car/gague-exporter). 
+PHP Client for [Gauge Exporter](https://github.com/belka-tech/gauge-exporter). 
 
 
 ## Usage example
 ```php
 <?php
 
-use Belkacar\GaugeExporterClient\GaugeExporterClient;
-use Belkacar\GaugeExporterClient\MetricBag;
+use BelkaTech\GaugeExporterClient\GaugeExporterClient;
+use BelkaTech\GaugeExporterClient\MetricBag;
 use GuzzleHttp\Client;
 
 require_once "vendor/autoload.php";

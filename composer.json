@@ -1,5 +1,5 @@
 {
-    "name": "belkacar/gauge-exporter-client",
+    "name": "belka-tech/gauge-exporter-client",
     "description": "Gauge Exporter PHP client",
     "type": "library",
     "license": "MIT",
@@ -12,12 +12,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Belkacar\\GaugeExporterClient\\": "src/"
+            "BelkaTech\\GaugeExporterClient\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Belkacar\\GaugeExporterClient\\Tests\\": "tests/"
+            "BelkaTech\\GaugeExporterClient\\Tests\\": "tests/"
         }
     },
     "config": {

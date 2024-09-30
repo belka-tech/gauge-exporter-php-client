@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Belkacar\GaugeExporterClient\Exception;
+namespace BelkaTech\GaugeExporterClient\Exception;
 
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\ResponseInterface;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Belkacar\GaugeExporterClient;
+namespace BelkaTech\GaugeExporterClient;
 
-use Belkacar\GaugeExporterClient\Exception\BadResponseException;
+use BelkaTech\GaugeExporterClient\Exception\BadResponseException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use GuzzleHttp\Psr7\Request;

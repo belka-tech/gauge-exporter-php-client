@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Belkacar\GaugeExporterClient\Tests;
+namespace BelkaTech\GaugeExporterClient\Tests;
 
-use Belkacar\GaugeExporterClient\Exception\BadResponseException;
-use Belkacar\GaugeExporterClient\GaugeExporterClient;
-use Belkacar\GaugeExporterClient\MetricBag;
+use BelkaTech\GaugeExporterClient\Exception\BadResponseException;
+use BelkaTech\GaugeExporterClient\GaugeExporterClient;
+use BelkaTech\GaugeExporterClient\MetricBag;
 use GuzzleHttp\Psr7\Response;
 use Http\Message\RequestMatcher\RequestMatcher;
 use Http\Mock\Client as MockClient;
