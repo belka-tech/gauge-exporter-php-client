@@ -47,7 +47,7 @@ class GaugeExporterClientTest extends TestCase
             [
                 'method' => 'PUT',
                 'url'  => 'https://example.com/gauge/metric.name',
-                'data' => '{"ttl":100,"data":[{"labels":{"key1":"b","key2":"d"},"value":10},{"labels":{"key1":"b","key2":"e"},"value":10}]}',
+                'data' => '{"ttl":100,"data":[{"labels":{"key1":"b","key2":"d"},"value":10},{"labels":{"key1":"b","key2":"e"},"value":10}],"system_labels":{}}',
             ],
             $this->simplifyRequest($psrClientMock->getLastRequest()),
         );
@@ -69,7 +69,7 @@ class GaugeExporterClientTest extends TestCase
             [
                 'method' => 'PUT',
                 'url'  => 'https://example.com/gauge/metric.name',
-                'data' => '{"ttl":100,"data":[{"labels":{},"value":10}]}',
+                'data' => '{"ttl":100,"data":[{"labels":{},"value":10}],"system_labels":{}}',
             ],
             $this->simplifyRequest($psrClientMock->getLastRequest()),
         );
@@ -90,13 +90,13 @@ class GaugeExporterClientTest extends TestCase
             [
                 'method' => 'PUT',
                 'url'  => 'https://example.com/gauge/metric.name',
-                'data' => '{"ttl":100,"data":[]}',
+                'data' => '{"ttl":100,"data":[],"system_labels":{}}',
             ],
             $this->simplifyRequest($psrClientMock->getLastRequest()),
         );
     }
 
-    public function testWholeRequestWithDefaultLabels(): void
+    public function testWholeRequestWithSystemLabels(): void
     {
         // Arrange
         $psrClientMock = new MockClient();
@@ -117,20 +117,20 @@ class GaugeExporterClientTest extends TestCase
 
         // Assert
         $expectedData = [
-            ['labels' => ['key2' => 'd', 'key3' => 'default_key3', 'key1' => 'b'], 'value' => 10],
-            ['labels' => ['key2' => 'default_key2', 'key3' => 'default_key3', 'key1' => 'b'], 'value' => 12],
+            ['labels' => ['key1' => 'b', 'key2' => 'd'], 'value' => 10],
+            ['labels' => ['key1' => 'b'], 'value' => 12],
         ];
         $this->assertSame(
             [
                 'method' => 'PUT',
                 'url'  => 'https://example.com/gauge/metric.name',
-                'data' => '{"ttl":100,"data":' . json_encode($expectedData) . '}',
+                'data' => '{"ttl":100,"data":' . json_encode($expectedData) . ',"system_labels":{"key2":"default_key2","key3":"default_key3"}}',
             ],
             $this->simplifyRequest($psrClientMock->getLastRequest()),
         );
     }
 
-    public function testWholeRequestWithEmptyBagAndDefaultLabels(): void
+    public function testWholeRequestWithEmptyBagAndSystemLabels(): void
     {
         // Arrange
         $psrClientMock = new MockClient();
@@ -152,7 +152,7 @@ class GaugeExporterClientTest extends TestCase
             [
                 'method' => 'PUT',
                 'url'  => 'https://example.com/gauge/metric.name',
-                'data' => '{"ttl":100,"data":[]}',
+                'data' => '{"ttl":100,"data":[],"system_labels":{"key2":"default_key2","key3":"default_key3"}}',
             ],
             $this->simplifyRequest($psrClientMock->getLastRequest()),
         );

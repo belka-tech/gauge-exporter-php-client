@@ -14,13 +14,13 @@ final class GaugeExporterClient
 {
     private string $apiDomain;
     private ClientInterface $client;
-    private array $defaultLabels;
+    private array $systemLabels;
 
-    public function __construct(ClientInterface $client, string $apiDomain, array $defaultLabels = [])
+    public function __construct(ClientInterface $client, string $apiDomain, array $systemLabels = [])
     {
         $this->client = $client;
         $this->apiDomain = trim($apiDomain, " \n\r\t\v\0/");
-        $this->defaultLabels = MetricLine::normalizeLabels($defaultLabels);
+        $this->systemLabels = MetricLine::normalizeLabels($systemLabels);
     }
 
     /**
@@ -32,6 +32,7 @@ final class GaugeExporterClient
         $body = [
             'ttl' => $ttlSec,
             'data' => $this->generateData($metricBag),
+            'system_labels' => !empty($this->systemLabels) ? $this->systemLabels : new stdClass(),
         ];
         $request = new Request(
             'PUT',
@@ -50,9 +51,8 @@ final class GaugeExporterClient
     {
         $result = [];
         foreach ($metricBag->getLogLines() as $logLine) {
-            $labels = array_merge($this->defaultLabels, $logLine->getLabels());
             $result[] = [
-                'labels' => !empty($labels) ? $labels : new stdClass(),
+                'labels' => !empty($logLine->getLabels()) ? $logLine->getLabels() : new stdClass(),
                 'value' => $logLine->getValue()
             ];
         }
