@@ -2,8 +2,8 @@
 
 PHP Client for [Gauge Exporter](https://github.com/belka-tech/gauge-exporter). 
 
-
 ## Usage example
+
 ```php
 <?php
 
@@ -11,7 +11,7 @@ use BelkaTech\GaugeExporterClient\GaugeExporterClient;
 use BelkaTech\GaugeExporterClient\MetricBag;
 use GuzzleHttp\Client;
 
-require_once "vendor/autoload.php";
+require_once 'vendor/autoload.php';
 
 $bag = new MetricBag('metric-name');
 $bag->increment(['a' => 'b'], 100);

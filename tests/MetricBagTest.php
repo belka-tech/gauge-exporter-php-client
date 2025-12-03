@@ -9,7 +9,7 @@ use Exception;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
-class MetricBagTest extends TestCase
+final class MetricBagTest extends TestCase
 {
     public function testCannotCreateMetricWithEmptyName(): void
     {

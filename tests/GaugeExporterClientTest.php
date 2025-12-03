@@ -13,7 +13,7 @@ use Http\Mock\Client as MockClient;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
-class GaugeExporterClientTest extends TestCase
+final class GaugeExporterClientTest extends TestCase
 {
     public function testGaugeExporterClientHostTrailingSlashTrimmed(): void
     {
